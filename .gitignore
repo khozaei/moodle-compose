@@ -1,0 +1,7 @@
+moodle-compose
+.env
+logs/*log
+data/moodle/*
+data/www/*
+!data/moodle/.gitkeep
+!data/www/.gitkeep
