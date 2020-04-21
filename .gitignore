@@ -3,5 +3,7 @@ moodle-compose
 logs/*log
 data/moodle/*
 data/www/*
+data/db/*
 !data/moodle/.gitkeep
 !data/www/.gitkeep
+!data/db/.gitkeep

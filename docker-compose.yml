@@ -14,12 +14,23 @@ services:
       - "moodle"
   moodle_db:
     image: mariadb:10.2
+    volumes:
+      - "./data/db:/var/lib/mysql"
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
       MYSQL_ONETIME_PASSWORD: "yes"
       MYSQL_DATABASE: "${MOODLE_DB_NAME}"
       MYSQL_USER: "${MOODLE_DB_USER}"
       MYSQL_PASSWORD: "${MOODLE_DB_PASSWORD}"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8083:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=moodle_db
+    links:
+      - moodle_db
   moodle:
     image: khozaei/moodle:latest
     volumes:
